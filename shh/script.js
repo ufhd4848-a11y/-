@@ -1,60 +1,60 @@
-// Menu Data with real images
+// Menu Data with real photos
 const menuItems = [
     {
         id: 1,
         name: 'Salmon Nigiri',
         description: 'Fresh Norwegian salmon on seasoned sushi rice with wasabi',
         price: 12,
-        image: 'https://source.unsplash.com/600x400/?salmon,sushi&sig=1'   // 1️⃣
+        image: 'images/menu/salmon-nigiri.svg'
     },
     {
         id: 2,
         name: 'Bluefin Tuna Sashimi',
         description: 'Premium cuts of raw bluefin tuna, served with ponzu sauce',
         price: 18,
-        image: 'https://source.unsplash.com/600x400/?tuna,sashimi&sig=2'   // 2️⃣
+        image: 'images/menu/bluefin-tuna-sashimi.svg'
     },
     {
         id: 3,
         name: 'Dragon Roll',
         description: 'Shrimp tempura and cucumber topped with eel and avocado',
         price: 16,
-        image: 'https://source.unsplash.com/600x400/?dragon,roll,sushi&sig=3' // 3️⃣
+        image: 'images/menu/dragon-roll.svg'
     },
     {
         id: 4,
         name: 'Spicy Tuna Roll',
         description: 'Spicy tuna mix with cucumber and sesame seeds',
         price: 14,
-        image: 'https://source.unsplash.com/600x400/?spicy,tuna,roll&sig=4' // 4️⃣
+        image: 'images/menu/spicy-tuna-roll.svg'
     },
     {
         id: 5,
         name: 'Rainbow Roll',
         description: 'California roll topped with assorted fresh fish',
         price: 20,
-        image: 'https://source.unsplash.com/600x400/?rainbow,roll,sushi&sig=5' // 5️⃣
+        image: 'images/menu/rainbow-roll.svg'
     },
     {
         id: 6,
         name: 'Wagyu Beef Nigiri',
         description: 'Seared A5 Wagyu beef with truffle oil and microgreens',
         price: 24,
-        image: 'https://source.unsplash.com/600x400/?wagyu,beef,sushi&sig=6' // 6️⃣
+        image: 'images/menu/wagyu-beef-nigiri.svg'
     },
     {
         id: 7,
         name: 'Tempura Udon',
         description: 'Thick wheat noodles in dashi broth with shrimp tempura',
         price: 15,
-        image: 'https://source.unsplash.com/600x400/?tempura,udon&sig=7'   // 7️⃣
+        image: 'images/menu/tempura-udon.svg'
     },
     {
         id: 8,
         name: 'Matcha Cheesecake',
         description: 'Creamy green tea cheesecake with red bean paste',
         price: 10,
-        image: 'https://source.unsplash.com/600x400/?matcha,cheesecake&sig=8' // 8️⃣
+        image: 'images/menu/matcha-cheesecake.svg'
     }
 ];
 
