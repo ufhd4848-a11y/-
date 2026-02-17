@@ -2,290 +2,619 @@
 const menuItems = [
     {
         id: 1,
-        name: 'Chef's Special #01',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 10,
+        name: 'Sashimi 130g - Yellowtail Fish',
+        description: 'Sashimi',
+        price: 56,
         image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 2,
-        name: 'Chef's Special #02',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 11,
-        image: 'images/photo_5231325408857363728_y.jpg'
+        name: 'Sashimi 130g - Tuna',
+        description: 'Sashimi',
+        price: 48,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 3,
-        name: 'Chef's Special #03',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 12,
-        image: 'images/photo_5231325408857363729_y.jpg'
+        name: 'Sashimi 130g - Prawns',
+        description: 'Sashimi',
+        price: 39,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 4,
-        name: 'Chef's Special #04',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 13,
-        image: 'images/photo_5231325408857363730_y.jpg'
+        name: 'Sashimi 130g - Eel',
+        description: 'Sashimi',
+        price: 58,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 5,
-        name: 'Chef's Special #05',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 14,
-        image: 'images/photo_5231325408857363731_y.jpg'
+        name: 'Sashimi 130g - Salmon',
+        description: 'Sashimi',
+        price: 47,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 6,
-        name: 'Chef's Special #06',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 15,
-        image: 'images/photo_5231325408857363732_y.jpg'
+        name: 'Nigiri 2pcs - Yellowtail Fish',
+        description: 'Nigiri',
+        price: 35,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 7,
-        name: 'Chef's Special #07',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 16,
-        image: 'images/photo_5231325408857363733_y.jpg'
+        name: 'Nigiri 2pcs - Tuna',
+        description: 'Nigiri',
+        price: 32,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 8,
-        name: 'Chef's Special #08',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 17,
-        image: 'images/photo_5231325408857363734_y.jpg'
+        name: 'Nigiri 2pcs - Prawns',
+        description: 'Nigiri',
+        price: 28,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 9,
-        name: 'Chef's Special #09',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 9,
-        image: 'images/photo_5231325408857363735_y.jpg'
+        name: 'Nigiri 2pcs - Eel',
+        description: 'Nigiri',
+        price: 37,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 10,
-        name: 'Chef's Special #10',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 10,
-        image: 'images/photo_5231325408857363736_y.jpg'
+        name: 'Nigiri 2pcs - Salmon',
+        description: 'Nigiri',
+        price: 30,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 11,
-        name: 'Chef's Special #11',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 11,
-        image: 'images/photo_5231325408857363737_y.jpg'
+        name: 'Gunkan 2pcs - Salmon Roe',
+        description: 'Gunkan',
+        price: 82,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 12,
-        name: 'Chef's Special #12',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 12,
-        image: 'images/photo_5231325408857363738_y.jpg'
+        name: 'Gunkan 2pcs - Tuna',
+        description: 'Gunkan',
+        price: 36,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 13,
-        name: 'Chef's Special #13',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 13,
-        image: 'images/photo_5231325408857363739_y.jpg'
+        name: 'Gunkan 2pcs - Prawns',
+        description: 'Gunkan',
+        price: 28,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 14,
-        name: 'Chef's Special #14',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 14,
-        image: 'images/photo_5231325408857363740_y.jpg'
+        name: 'Gunkan 2pcs - Eel',
+        description: 'Gunkan',
+        price: 42,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 15,
-        name: 'Chef's Special #15',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 15,
-        image: 'images/photo_5231325408857363741_y.jpg'
+        name: 'Gunkan 2pcs - Salmon',
+        description: 'Gunkan',
+        price: 32,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 16,
-        name: 'Chef's Special #16',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 16,
-        image: 'images/photo_5231325408857363742_y.jpg'
+        name: 'Gunkan 2pcs - Tobiko',
+        description: 'Gunkan',
+        price: 40,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 17,
-        name: 'Chef's Special #17',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 17,
-        image: 'images/photo_5231325408857363743_y.jpg'
+        name: 'Maki roll - Tuna',
+        description: 'Maki roll',
+        price: 38,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 18,
-        name: 'Chef's Special #18',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 9,
-        image: 'images/photo_5231325408857363744_y.jpg'
+        name: 'Maki roll - Eel',
+        description: 'Eel sauce, sesame seeds',
+        price: 38,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 19,
-        name: 'Chef's Special #19',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 10,
-        image: 'images/photo_5231325408857363745_y.jpg'
+        name: 'Maki roll - Salmon',
+        description: 'Maki roll',
+        price: 32,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 20,
-        name: 'Chef's Special #20',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 11,
-        image: 'images/photo_5231325408857363746_y.jpg'
+        name: 'Maki roll - Shrimp',
+        description: 'Maki roll',
+        price: 30,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 21,
-        name: 'Chef's Special #21',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 12,
-        image: 'images/photo_5231325408857363747_y.jpg'
+        name: 'Maki roll - Avocado',
+        description: 'Eel sauce, sesame seeds',
+        price: 28,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 22,
-        name: 'Chef's Special #22',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 13,
-        image: 'images/photo_5231325408857363748_y.jpg'
+        name: 'Maki roll - Cucumber',
+        description: 'Eel sauce, sesame seeds',
+        price: 27,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 23,
-        name: 'Chef's Special #23',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 14,
-        image: 'images/photo_5231325408857363750_y.jpg'
+        name: 'Maki roll - Hamachi',
+        description: 'With yellowtail fish and spicy sauce',
+        price: 40,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 24,
-        name: 'Chef's Special #24',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 15,
-        image: 'images/photo_5231325408857363751_y.jpg'
+        name: 'California',
+        description: 'With Crab Surimi, Cream Cheese, Cucumber, Avocado, Tobiko And Japanese Mayo',
+        price: 50,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 25,
-        name: 'Chef's Special #25',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 16,
-        image: 'images/photo_5231325408857363752_y.jpg'
+        name: 'Philadelphia',
+        description: 'With Salmon, Cream Cheese, Cucumber, Avocado And Tobiko',
+        price: 59,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 26,
-        name: 'Chef's Special #26',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 17,
-        image: 'images/photo_5231325408857363753_y.jpg'
+        name: 'Spicy Tuna',
+        description: 'With Tuna, Cream Cheese, Cucumber, Avocado, Tobiko, Takuan And Spicy Sauce',
+        price: 52,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 27,
-        name: 'Chef's Special #27',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 9,
-        image: 'images/photo_5231325408857363754_y.jpg'
+        name: 'Geisha',
+        description: 'With Shrimp, Eel, Cream Cheese, Avocado, Tobiko',
+        price: 68,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 28,
-        name: 'Chef's Special #28',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 10,
-        image: 'images/photo_5231325408857363755_y.jpg'
+        name: 'Cream roll',
+        description: 'With Fried Salmon, Crab Surimi, Salmon Roe, Cream Cheese, Cucumber And Avocado',
+        price: 72,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 29,
-        name: 'Chef's Special #29',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 11,
-        image: 'images/photo_5231325408857363756_y.jpg'
+        name: 'Shogun',
+        description: 'With Salmon, Eel, Salmon Roe, Cream Cheese, Cucumber, Avocado, Japanese Mayo, Tobiko, Eel Sauce And Sesame Seeds',
+        price: 79,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 30,
-        name: 'Chef's Special #30',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 12,
-        image: 'images/photo_5231325408857363757_y.jpg'
+        name: 'Ninja',
+        description: 'With Tuna, Salmon, Cucumber, Avocado And Tobiko',
+        price: 69,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 31,
-        name: 'Chef's Special #31',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 13,
-        image: 'images/photo_5231325408857363758_y.jpg'
+        name: 'Canada',
+        description: 'With Eel, Salmon, Cucumber, Avocado, Cream Cheese, Eel Sauce And Sesame Seeds',
+        price: 72,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 32,
-        name: 'Chef's Special #32',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 14,
-        image: 'images/photo_5231325408857363759_y(1).jpg'
+        name: 'Red Dragon',
+        description: 'With Salmon, Eel, Avocado, Cucumber, Tobiko, Japanese Mayo And Salmon Roe',
+        price: 85,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 33,
-        name: 'Chef's Special #33',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 15,
-        image: 'images/photo_5231325408857363759_y.jpg'
+        name: 'Green Dragon',
+        description: 'With Avocado, Eel, Crab Surimi, Cucumber, Tobiko, Cream Cheese, Eel Sauce And Sesame Seeds',
+        price: 69,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 34,
-        name: 'Chef's Special #34',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 16,
-        image: 'images/photo_5231325408857363761_y.jpg'
+        name: 'Futomaki',
+        description: 'With Shrimp, Crab Surimi, Eel, Salmon, Cucumber, Avocado, Cream Cheese, Eel Sauce, Sesame Seeds, Tobiko And Spicy Sauce',
+        price: 79,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 35,
-        name: 'Chef's Special #35',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 17,
-        image: 'images/photo_5231325408857363762_y.jpg'
+        name: 'Black Pearl',
+        description: 'With Salmon Roe, Eel, Avocado, Cream Cheese, Cucumber And Tobiko',
+        price: 87,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 36,
-        name: 'Chef's Special #36',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 9,
-        image: 'images/photo_5231325408857363763_y.jpg'
+        name: 'Alaska',
+        description: 'With Salmon, Avocado, Cream Cheese And Tobiko',
+        price: 55,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 37,
-        name: 'Chef's Special #37',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 10,
-        image: 'images/photo_5231325408857363764_y.jpg'
+        name: 'Tataki Tuna',
+        description: 'With fried tuna on top, Japanese mayonnaise and tobiko, inside surimi crab and avocado',
+        price: 70,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 38,
-        name: 'Chef's Special #38',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 11,
-        image: 'images/photo_5231325408857363765_y.jpg'
+        name: 'Rainbow',
+        description: 'Roll with shrimp, salmon, eel, tuna, crab and yellowtail fish, Philadelphia cheese and avocado',
+        price: 69,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 39,
-        name: 'Chef's Special #39',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 12,
-        image: 'images/photo_5231325408857363766_y.jpg'
+        name: 'Vegan Roll',
+        description: 'With cucumber, chuka salad, avocado, bell pepper, pickled white radish and Philadelphia cheese',
+        price: 69,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 40,
-        name: 'Chef's Special #40',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 13,
-        image: 'images/photo_5231325408857363767_y.jpg'
+        name: 'Spicy Salmon',
+        description: 'With salmon, cucumber, avocado, tobiko and spicy sauce',
+        price: 58,
+        image: 'images/photo_5231325408857363727_y.jpg'
     },
     {
         id: 41,
-        name: 'Chef's Special #41',
-        description: 'Авторское блюдо из свежих ингредиентов и японских акцентов',
-        price: 14,
-        image: 'images/photo_5231325408857363769_y.jpg'
+        name: 'Unagi Roll',
+        description: 'With eel on top, shrimp, avocado, cucumber and Philadelphia cheese inside',
+        price: 69,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 42,
+        name: 'Tempura roll',
+        description: 'With fried tempura shrimp, Philadelphia cheese, avocado in tobiko',
+        price: 58,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 43,
+        name: 'Philadelphia with Tuna',
+        description: 'Classic roll with tuna on top and Philadelphia cheese inside, tobiko, avocado and cucumber',
+        price: 63,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 44,
+        name: 'Philadelphia with Shrimp',
+        description: 'Classic roll with prawns on top and Philadelphia cheese inside, tobiko, avocado and cucumber',
+        price: 55,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 45,
+        name: 'Philadelphia with Unagi',
+        description: 'Classic roll with eel on top and Philadelphia cheese inside, tobiko, avocado, cucumber, sesame seeds and eel sauce',
+        price: 62,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 46,
+        name: 'Tiger Dragon',
+        description: 'With shrimp on top, chuka salad inside and cucumber, also spicy sauce and green tobiko',
+        price: 64,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 47,
+        name: 'Chicken roll',
+        description: 'With fried chicken tempura, cherry tomato, Philadelphia cheese, cucumber in tobiko',
+        price: 56,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 48,
+        name: 'Bonito roll',
+        description: 'With grilled salmon, fresh wild scallion, Philadelphia cheese in tuna flakes',
+        price: 50,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 49,
+        name: 'Fried Salmon',
+        description: 'With fried salmon, Philadelphia cheese, avocado, tobiko, sesame seeds',
+        price: 51,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 50,
+        name: 'Sake hot',
+        description: 'With Salmon, Cream Cheese, Avocado, Tempura, Bread Crumbs, Eel Sauce, Sesame Seeds',
+        price: 65,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 51,
+        name: 'Unagi hot',
+        description: 'With Eel, Cream Cheese, Avocado, Tempura, Bread Crumbs, Eel Sauce, Sesame Seeds',
+        price: 70,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 52,
+        name: 'Shrimp hot',
+        description: 'With Shrimp, Crab Surimi, Tobiko, Cream Cheese, Avocado, Tempura, Bread Crumbs, Eel Sauce, Sesame Seeds',
+        price: 60,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 53,
+        name: 'Maguro hot',
+        description: 'With Tuna, Cream Cheese, Avocado, Tobiko, Tempura, Bread Crumbs, Eel Sauce, Sesame Seeds',
+        price: 65,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 54,
+        name: 'Vegan hot',
+        description: 'Hot with pickled white radish, cream cheese, avocado, tempura, bread crumbs, bell pepper and sesame seed',
+        price: 45,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 55,
+        name: 'Baked Roll - Maguro',
+        description: 'With Tuna, Cream Cheese, Avocado, Parmesan, Tobiko, Japanese Mayo And Eel Sauce',
+        price: 71,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 56,
+        name: 'Baked Roll - Hamachi',
+        description: 'With Yellowtail Fish, Cream Cheese, Avocado, Parmesan, Tobiko, Japanese Mayo And Eel Sauce',
+        price: 71,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 57,
+        name: 'Baked Roll - Crab surimi',
+        description: 'With Crab Surimi, Cream Cheese, Avocado, Parmesan, Tobiko, Japanese Mayo And Eel Sauce',
+        price: 67,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 58,
+        name: 'Baked Roll - Sake',
+        description: 'With Salmon, Cream Cheese, Avocado, Parmesan, Tobiko, Japanese Mayo And Eel Sauce',
+        price: 70,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 59,
+        name: 'Baked Roll - Shrimp',
+        description: 'With Shrimp, Cream Cheese, Avocado, Parmesan, Tobiko, Japanese Mayo And Eel Sauce',
+        price: 68,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 60,
+        name: 'Baked Roll - Unagi',
+        description: 'With Eel, Cream Cheese, Avocado, Parmesan, Tobiko, Japanese Mayo And Eel Sauce',
+        price: 72,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 61,
+        name: 'Signature roll - Truffle',
+        description: 'With yellowtail fish, cream cheese, truffle, avocado and sesame seeds',
+        price: 132,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 62,
+        name: 'Signature roll - King Crab',
+        description: 'Exclusive roll with King Crab, fried in tempura with Philadelphia cheese and avocado',
+        price: 150,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 63,
+        name: 'Set Moriawase (900g)',
+        description: 'Sashimi with Salmon, Tuna, Yellowtail Fish; Nigiri with Salmon, Tuna, Yellowtail Fish, Shrimp, Eel; Gunkan with Salmon Roe, Tobiko, Tuna, Eel',
+        price: 455,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 64,
+        name: 'Set #1 (830g)',
+        description: 'Maki with Salmon, California, Spicy Tuna, Philadelphia',
+        price: 180,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 65,
+        name: 'Set #2 (1470g)',
+        description: 'Cream roll, Philadelphia, Geisha, California, Shogun, Ninja',
+        price: 375,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 66,
+        name: 'Set #3 (1250g)',
+        description: 'Philadelphia x2, Canada x2, Shogun x1',
+        price: 320,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 67,
+        name: 'Set #4 (1300g)',
+        description: 'Unagi Hot, Shrimp Hot, Salmon Hot, Tuna Hot',
+        price: 250,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 68,
+        name: 'Set Dragon (780g)',
+        description: 'Red Dragon, Green Dragon, Unagi Dragon',
+        price: 200,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 69,
+        name: 'Set Philadelphia',
+        description: 'Philadelphia, Philadelphia Tuna, Philadelphia Unagi, Philadelphia Shrimp',
+        price: 250,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 70,
+        name: 'Set Baked',
+        description: 'Baked with salmon, baked with eel, baked with Hamachi, baked with shrimp',
+        price: 260,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 71,
+        name: 'Happy Box',
+        description: 'California, Maki Cucumber, Gunkan with Tobiko',
+        price: 90,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 72,
+        name: 'Set Unagi',
+        description: 'Sashimi with eel, Nigiri with Eel, Maki eel, Unagi Roll',
+        price: 190,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 73,
+        name: 'Set for One',
+        description: 'Maki salmon, Nigiri shrimp, Philadelphia',
+        price: 105,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 74,
+        name: 'Mix Box',
+        description: 'Ninja roll, Shogun, Nigiri with yellowtail fish, Gunkan with eel, Maki with shrimp',
+        price: 225,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 75,
+        name: 'Signature Box',
+        description: 'Sashimi shrimp, Sashimi Tuna, Nigiri shrimp, Nigiri tuna, Nigiri eel, Gunkan eel, Gunkan salmon, Gunkan tuna',
+        price: 280,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 76,
+        name: 'Set Salmon',
+        description: 'Philadelphia, Maki salmon, Sashimi salmon, Nigiri salmon, Gunkan with salmon',
+        price: 190,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 77,
+        name: 'Set Sakura',
+        description: 'Philadelphia, Unagi, Geisha, Maki shrimp, Maki avocado, Nigiri eel, Nigiri shrimp',
+        price: 215,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 78,
+        name: 'TarTar - Salmon',
+        description: 'Fried crispy rice with Truffle and Norwegian salmon on nori chip',
+        price: 68,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 79,
+        name: 'TarTar - Eel',
+        description: 'Fried crispy rice with Truffle and eel on nori chip, sesame seeds',
+        price: 69,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 80,
+        name: 'TarTar - Tuna',
+        description: 'Fried crispy rice with Truffle and bluefin tuna on nori chip',
+        price: 70,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 81,
+        name: 'Poke with Chicken',
+        description: 'Poke salad with rice, fried chicken tempura dressed with teriyaki sauce, corn, red onion, snow peas, bell pepper, avocado, cherry tomatoes, cucumber and scallion. Served with soy sauce',
+        price: 55,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 82,
+        name: 'Poke with Eel',
+        description: 'Poke salad with rice, eel, edamame beans, corn, soy sprouts, avocado, arugula, eel sauce and sesame seeds. Served with soy sauce',
+        price: 68,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 83,
+        name: 'Poke with Salmon',
+        description: 'Poke salad with rice, Norwegian salmon, Edamame beans, corn, soy sprouts, avocado, cucumber, cherry tomatoes and tobiko. Served with soy sauce',
+        price: 70,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 84,
+        name: 'Salad Chuka',
+        description: 'With Wakame, Lemon, Sesame Sauce, Ginger, Eel Sauce And Sesame Seeds',
+        price: 32,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 85,
+        name: 'Poke with Shrimp',
+        description: 'Poke salad with rice, local shrimp, surimi crab dressed with Japanese mayonnaise, avocado, pickled white radish, cucumber, cherry tomatoes, mango, snow peas and tobiko. Served with soy sauce',
+        price: 60,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 86,
+        name: 'Poke with Tuna',
+        description: 'Poke salad with rice, bluefin tuna, avocado, cucumber, Edamame beans, red onion, lemon, scallion and tobiko. Served with soy sauce',
+        price: 75,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 87,
+        name: 'Poke Vegan',
+        description: 'Poke salad with rice, avocado, cucumber, Edamame beans, scallion Chuka, baby carrots, soy sprouts, snow peas and nori. Served with soy sauce',
+        price: 49,
+        image: 'images/photo_5231325408857363727_y.jpg'
+    },
+    {
+        id: 88,
+        name: 'Poke with Hamachi',
+        description: 'Poke salad with rice, Japanese yellowtail fish, cucumber, Edamame beans, scallion, Chuka, soy sprouts and cuma. Served with soy sauce',
+        price: 75,
+        image: 'images/photo_5231325408857363727_y.jpg'
     }
 ];
 
@@ -323,7 +652,7 @@ function renderMenu() {
                 <h3 class="menu-title">${item.name}</h3>
                 <p class="menu-description">${item.description}</p>
                 <div class="menu-footer">
-                    <span class="menu-price">$${item.price}</span>
+                    <span class="menu-price">${item.price} AED</span>
                     <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
                 </div>
             </div>
@@ -396,7 +725,7 @@ function updateCartUI() {
                 <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                 <div class="cart-item-details">
                     <div class="cart-item-title">${item.name}</div>
-                    <div class="cart-item-price">$${item.price}</div>
+                    <div class="cart-item-price">${item.price} AED</div>
                     <div class="cart-item-quantity">
                         <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
                         <span>${item.quantity}</span>
@@ -409,7 +738,7 @@ function updateCartUI() {
     }
 
     // Update total
-    cartTotal.textContent = `$${calculateTotal().toFixed(2)}`;
+    cartTotal.textContent = `${calculateTotal().toFixed(2)} AED`;
 }
 
 // Cart Sidebar Toggle
