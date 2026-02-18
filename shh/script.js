@@ -624,97 +624,216 @@ const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 const contactForm = document.getElementById('contactForm');
 
+const menuImages = [
+    'images/photo_5231325408857363727_y.jpg',
+    'images/photo_5231325408857363728_y.jpg',
+    'images/photo_5231325408857363729_y.jpg',
+    'images/photo_5231325408857363730_y.jpg',
+    'images/photo_5231325408857363731_y.jpg',
+    'images/photo_5231325408857363732_y.jpg',
+    'images/photo_5231325408857363733_y.jpg',
+    'images/photo_5231325408857363734_y.jpg',
+    'images/photo_5231325408857363735_y.jpg',
+    'images/photo_5231325408857363736_y.jpg',
+    'images/photo_5231325408857363737_y.jpg',
+    'images/photo_5231325408857363738_y.jpg',
+    'images/photo_5231325408857363739_y.jpg',
+    'images/photo_5231325408857363740_y.jpg',
+    'images/photo_5231325408857363741_y.jpg',
+    'images/photo_5231325408857363742_y.jpg',
+    'images/photo_5231325408857363743_y.jpg',
+    'images/photo_5231325408857363744_y.jpg',
+    'images/photo_5231325408857363745_y.jpg',
+    'images/photo_5231325408857363746_y.jpg',
+    'images/photo_5231325408857363747_y.jpg',
+    'images/photo_5231325408857363748_y.jpg',
+    'images/photo_5231325408857363750_y.jpg',
+    'images/photo_5231325408857363751_y.jpg',
+    'images/photo_5231325408857363752_y.jpg',
+    'images/photo_5231325408857363753_y.jpg',
+    'images/photo_5231325408857363754_y.jpg',
+    'images/photo_5231325408857363755_y.jpg',
+    'images/photo_5231325408857363756_y.jpg',
+    'images/photo_5231325408857363757_y.jpg',
+    'images/photo_5231325408857363758_y.jpg',
+    'images/photo_5231325408857363759_y.jpg',
+    'images/photo_5231325408857363759_y(1).jpg',
+    'images/photo_5231325408857363761_y.jpg',
+    'images/photo_5231325408857363762_y.jpg',
+    'images/photo_5231325408857363763_y.jpg',
+    'images/photo_5231325408857363764_y.jpg',
+    'images/photo_5231325408857363765_y.jpg',
+    'images/photo_5231325408857363766_y.jpg',
+    'images/photo_5231325408857363767_y.jpg',
+    'images/photo_5231325408857363769_y.jpg'
+];
+
+const categoryConfig = [
+    { key: 'Sashimi & Nigiri', tags: ['Sashimi 130g', 'Nigiri 2pcs', 'Gunkan 2pcs'] },
+    { key: 'Maki Roll', tags: ['Maki roll'] },
+    { key: 'Sushi Roll', tags: ['California', 'Philadelphia', 'Spicy Tuna', 'Geisha', 'Cream roll', 'Shogun', 'Ninja', 'Canada', 'Dragon', 'Futomaki', 'Black Pearl', 'Alaska', 'Tataki Tuna', 'Rainbow', 'Vegan Roll', 'Spicy Salmon', 'Unagi Roll', 'Tempura roll', 'Tiger Dragon', 'Chicken roll', 'Bonito roll', 'Fried Salmon'] },
+    { key: 'Hot Roll', tags: ['hot'] },
+    { key: 'Baked Roll', tags: ['Baked Roll'] },
+    { key: 'Signature Roll', tags: ['Signature roll'] },
+    { key: 'Set', tags: ['Set', 'Box'] },
+    { key: 'TarTar', tags: ['TarTar'] },
+    { key: 'Salads', tags: ['Poke', 'Salad Chuka'] }
+];
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     renderMenu();
     setupEventListeners();
 });
 
+function normalizeName(name) {
+    return name.toLowerCase();
+}
+
+function categoryForItem(name) {
+    const n = normalizeName(name);
+
+    for (const category of categoryConfig) {
+        if (category.tags.some(tag => n.includes(tag.toLowerCase()))) {
+            return category.key;
+        }
+    }
+
+    return 'Chef Specials';
+}
+
+function pickImage(seed) {
+    const hash = Array.from(seed).reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return menuImages[hash % menuImages.length];
+}
+
 function groupMenuItems(items) {
-    const grouped = new Map();
+    const groupedByCategory = new Map();
 
     items.forEach(item => {
         const [baseName, variantName] = item.name.split(' - ');
+        const category = categoryForItem(item.name);
+
+        if (!groupedByCategory.has(category)) {
+            groupedByCategory.set(category, new Map());
+        }
+
+        const categoryItems = groupedByCategory.get(category);
 
         if (variantName) {
-            if (!grouped.has(baseName)) {
-                grouped.set(baseName, {
+            if (!categoryItems.has(baseName)) {
+                categoryItems.set(baseName, {
                     type: 'group',
                     title: baseName,
-                    featured: item,
+                    description: item.description,
+                    image: pickImage(baseName),
                     variants: []
                 });
             }
 
-            grouped.get(baseName).variants.push({
+            categoryItems.get(baseName).variants.push({
                 id: item.id,
                 name: variantName,
                 description: item.description,
                 price: item.price
             });
         } else {
-            grouped.set(`${item.id}-${item.name}`, {
+            categoryItems.set(`${item.id}-${item.name}`, {
                 type: 'single',
-                item
+                item: {
+                    ...item,
+                    image: pickImage(item.name)
+                }
             });
         }
     });
 
-    return Array.from(grouped.values());
+    const sortedCategories = Array.from(groupedByCategory.entries()).map(([title, mapItems]) => {
+        const entries = Array.from(mapItems.values()).sort((a, b) => {
+            const left = a.type === 'group' ? a.title : a.item.name;
+            const right = b.type === 'group' ? b.title : b.item.name;
+            return left.localeCompare(right);
+        });
+
+        return { title, entries };
+    });
+
+    return sortedCategories.sort((a, b) => {
+        const aIndex = categoryConfig.findIndex(category => category.key === a.title);
+        const bIndex = categoryConfig.findIndex(category => category.key === b.title);
+        const left = aIndex === -1 ? Number.MAX_SAFE_INTEGER : aIndex;
+        const right = bIndex === -1 ? Number.MAX_SAFE_INTEGER : bIndex;
+        return left - right;
+    });
+}
+
+function renderCategory(category) {
+    return `
+        <section class="menu-category-block">
+            <h3 class="menu-category-title">${category.title}</h3>
+            <div class="menu-grid">
+                ${category.entries.map(group => renderCard(group)).join('')}
+            </div>
+        </section>
+    `;
+}
+
+function renderCard(group) {
+    if (group.type === 'single') {
+        const item = group.item;
+        return `
+            <article class="menu-card single-menu-card">
+                <div class="menu-image">
+                    <img src="${item.image}" alt="${item.name}">
+                </div>
+                <div class="menu-content">
+                    <h3 class="menu-title">${item.name}</h3>
+                    <p class="menu-description">${item.description}</p>
+                    <div class="menu-footer">
+                        <span class="menu-price">${item.price} AED</span>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
+
+    return `
+        <article class="menu-card menu-group-card">
+            <div class="menu-image">
+                <img src="${group.image}" alt="${group.title}">
+            </div>
+            <div class="menu-content">
+                <button class="group-toggle" type="button" aria-expanded="false">
+                    <span class="menu-title">${group.title}</span>
+                    <span class="group-arrow">▼</span>
+                </button>
+                <p class="menu-description">${group.description}</p>
+                <div class="menu-footer">
+                    <span class="menu-price">from ${Math.min(...group.variants.map(v => v.price))} AED</span>
+                    <span class="variants-count">${group.variants.length} options</span>
+                </div>
+                <div class="group-variants" hidden>
+                    ${group.variants.map(variant => `
+                        <div class="variant-item">
+                            <div>
+                                <div class="variant-name">${variant.name}</div>
+                                <div class="variant-description">${variant.description}</div>
+                            </div>
+                            <span class="variant-price">${variant.price} AED</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        </article>
+    `;
 }
 
 // Render Menu
 function renderMenu() {
     const groupedItems = groupMenuItems(menuItems);
 
-    menuGrid.innerHTML = groupedItems.map(group => {
-        if (group.type === 'single') {
-            const item = group.item;
-            return `
-                <article class="menu-card">
-                    <div class="menu-image">
-                        <img src="${item.image}" alt="${item.name}">
-                    </div>
-                    <div class="menu-content">
-                        <h3 class="menu-title">${item.name}</h3>
-                        <p class="menu-description">${item.description}</p>
-                        <div class="menu-footer">
-                            <span class="menu-price">${item.price} AED</span>
-                        </div>
-                    </div>
-                </article>
-            `;
-        }
-
-        return `
-            <article class="menu-card menu-group-card">
-                <div class="menu-image">
-                    <img src="${group.featured.image}" alt="${group.title}">
-                </div>
-                <div class="menu-content">
-                    <button class="group-toggle" type="button" aria-expanded="false">
-                        <span class="menu-title">${group.title}</span>
-                        <span class="group-arrow">▼</span>
-                    </button>
-                    <p class="menu-description">${group.featured.description}</p>
-                    <div class="menu-footer">
-                        <span class="menu-price">from ${Math.min(...group.variants.map(v => v.price))} AED</span>
-                    </div>
-                    <div class="group-variants" hidden>
-                        ${group.variants.map(variant => `
-                            <div class="variant-item">
-                                <div>
-                                    <div class="variant-name">${variant.name}</div>
-                                    <div class="variant-description">${variant.description}</div>
-                                </div>
-                                <span class="variant-price">${variant.price} AED</span>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            </article>
-        `;
-    }).join('');
+    menuGrid.classList.add('menu-category-wrapper');
+    menuGrid.innerHTML = groupedItems.map(renderCategory).join('');
 
     document.querySelectorAll('.group-toggle').forEach(button => {
         button.addEventListener('click', () => {
@@ -784,14 +903,10 @@ function handleFormSubmit(e) {
     }
 
     if (isValid) {
-        // Show success message
         successMessage.textContent = 'Thank you! Your message has been sent successfully.';
         successMessage.classList.add('show');
-
-        // Reset form
         contactForm.reset();
 
-        // Hide success message after 5 seconds
         setTimeout(() => {
             successMessage.classList.remove('show');
         }, 5000);
