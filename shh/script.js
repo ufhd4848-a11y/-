@@ -618,18 +618,8 @@ const menuItems = [
     }
 ];
 
-// Cart State
-let cart = JSON.parse(localStorage.getItem('sushiwave_cart')) || [];
-
 // DOM Elements
 const menuGrid = document.getElementById('menuGrid');
-const cartItems = document.getElementById('cartItems');
-const cartTotal = document.getElementById('cartTotal');
-const cartCount = document.getElementById('cartCount');
-const cartSidebar = document.getElementById('cartSidebar');
-const cartOverlay = document.getElementById('cartOverlay');
-const cartToggle = document.getElementById('cartToggle');
-const closeCart = document.getElementById('closeCart');
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 const contactForm = document.getElementById('contactForm');
@@ -637,130 +627,108 @@ const contactForm = document.getElementById('contactForm');
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     renderMenu();
-    updateCartUI();
     setupEventListeners();
 });
 
+function groupMenuItems(items) {
+    const grouped = new Map();
+
+    items.forEach(item => {
+        const [baseName, variantName] = item.name.split(' - ');
+
+        if (variantName) {
+            if (!grouped.has(baseName)) {
+                grouped.set(baseName, {
+                    type: 'group',
+                    title: baseName,
+                    featured: item,
+                    variants: []
+                });
+            }
+
+            grouped.get(baseName).variants.push({
+                id: item.id,
+                name: variantName,
+                description: item.description,
+                price: item.price
+            });
+        } else {
+            grouped.set(`${item.id}-${item.name}`, {
+                type: 'single',
+                item
+            });
+        }
+    });
+
+    return Array.from(grouped.values());
+}
+
 // Render Menu
 function renderMenu() {
-    menuGrid.innerHTML = menuItems.map(item => `
-        <article class="menu-card">
-            <div class="menu-image">
-                <img src="${item.image}" alt="${item.name}">
-            </div>
-            <div class="menu-content">
-                <h3 class="menu-title">${item.name}</h3>
-                <p class="menu-description">${item.description}</p>
-                <div class="menu-footer">
-                    <span class="menu-price">${item.price} AED</span>
-                    <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
-                </div>
-            </div>
-        </article>
-    `).join('');
+    const groupedItems = groupMenuItems(menuItems);
 
-    // Add event listeners to add to cart buttons
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const id = parseInt(e.target.dataset.id);
-            addToCart(id);
+    menuGrid.innerHTML = groupedItems.map(group => {
+        if (group.type === 'single') {
+            const item = group.item;
+            return `
+                <article class="menu-card">
+                    <div class="menu-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="menu-content">
+                        <h3 class="menu-title">${item.name}</h3>
+                        <p class="menu-description">${item.description}</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">${item.price} AED</span>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        return `
+            <article class="menu-card menu-group-card">
+                <div class="menu-image">
+                    <img src="${group.featured.image}" alt="${group.title}">
+                </div>
+                <div class="menu-content">
+                    <button class="group-toggle" type="button" aria-expanded="false">
+                        <span class="menu-title">${group.title}</span>
+                        <span class="group-arrow">▼</span>
+                    </button>
+                    <p class="menu-description">${group.featured.description}</p>
+                    <div class="menu-footer">
+                        <span class="menu-price">from ${Math.min(...group.variants.map(v => v.price))} AED</span>
+                    </div>
+                    <div class="group-variants" hidden>
+                        ${group.variants.map(variant => `
+                            <div class="variant-item">
+                                <div>
+                                    <div class="variant-name">${variant.name}</div>
+                                    <div class="variant-description">${variant.description}</div>
+                                </div>
+                                <span class="variant-price">${variant.price} AED</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </article>
+        `;
+    }).join('');
+
+    document.querySelectorAll('.group-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const variants = button.parentElement.querySelector('.group-variants');
+            const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+            button.setAttribute('aria-expanded', String(!isOpen));
+            variants.hidden = isOpen;
         });
     });
 }
 
-// Cart Functions
-function addToCart(id) {
-    const item = menuItems.find(item => item.id === id);
-    const existingItem = cart.find(cartItem => cartItem.id === id);
-
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({ ...item, quantity: 1 });
-    }
-
-    saveCart();
-    updateCartUI();
-    openCart();
-}
-
-function removeFromCart(id) {
-    cart = cart.filter(item => item.id !== id);
-    saveCart();
-    updateCartUI();
-}
-
-function updateQuantity(id, change) {
-    const item = cart.find(item => item.id === id);
-    if (item) {
-        item.quantity += change;
-        if (item.quantity <= 0) {
-            removeFromCart(id);
-        } else {
-            saveCart();
-            updateCartUI();
-        }
-    }
-}
-
-function calculateTotal() {
-    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-}
-
-function saveCart() {
-    localStorage.setItem('sushiwave_cart', JSON.stringify(cart));
-}
-
-function updateCartUI() {
-    // Update cart count
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
-
-    // Update cart items display
-    if (cart.length === 0) {
-        cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
-    } else {
-        cartItems.innerHTML = cart.map(item => `
-            <div class="cart-item">
-                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                <div class="cart-item-details">
-                    <div class="cart-item-title">${item.name}</div>
-                    <div class="cart-item-price">${item.price} AED</div>
-                    <div class="cart-item-quantity">
-                        <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
-                        <span>${item.quantity}</span>
-                        <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
-                    </div>
-                </div>
-                <button class="remove-item" onclick="removeFromCart(${item.id})">×</button>
-            </div>
-        `).join('');
-    }
-
-    // Update total
-    cartTotal.textContent = `${calculateTotal().toFixed(2)} AED`;
-}
-
-// Cart Sidebar Toggle
-function openCart() {
-    cartSidebar.classList.add('open');
-    cartOverlay.classList.add('show');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeCartSidebar() {
-    cartSidebar.classList.remove('open');
-    cartOverlay.classList.remove('show');
-    document.body.style.overflow = '';
-}
-
 // Event Listeners
 function setupEventListeners() {
-    // Cart toggle
-    cartToggle.addEventListener('click', openCart);
-    closeCart.addEventListener('click', closeCartSidebar);
-    cartOverlay.addEventListener('click', closeCartSidebar);
-
     // Mobile menu
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
@@ -782,12 +750,12 @@ function setupEventListeners() {
 // Form Validation
 function handleFormSubmit(e) {
     e.preventDefault();
-    
+
     const name = document.getElementById('name');
     const email = document.getElementById('email');
     const message = document.getElementById('message');
     const successMessage = document.getElementById('successMessage');
-    
+
     let isValid = true;
 
     // Reset errors
@@ -819,10 +787,10 @@ function handleFormSubmit(e) {
         // Show success message
         successMessage.textContent = 'Thank you! Your message has been sent successfully.';
         successMessage.classList.add('show');
-        
+
         // Reset form
         contactForm.reset();
-        
+
         // Hide success message after 5 seconds
         setTimeout(() => {
             successMessage.classList.remove('show');
@@ -836,11 +804,3 @@ function showError(input, message) {
     errorElement.textContent = message;
     errorElement.classList.add('show');
 }
-
-// Close cart on escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeCartSidebar();
-    }
-});
-
