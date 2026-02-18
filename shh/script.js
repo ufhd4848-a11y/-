@@ -624,60 +624,83 @@ const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 const contactForm = document.getElementById('contactForm');
 
-const menuImages = [
-    'images/photo_5231325408857363727_y.jpg',
-    'images/photo_5231325408857363728_y.jpg',
-    'images/photo_5231325408857363729_y.jpg',
-    'images/photo_5231325408857363730_y.jpg',
-    'images/photo_5231325408857363731_y.jpg',
-    'images/photo_5231325408857363732_y.jpg',
-    'images/photo_5231325408857363733_y.jpg',
-    'images/photo_5231325408857363734_y.jpg',
-    'images/photo_5231325408857363735_y.jpg',
-    'images/photo_5231325408857363736_y.jpg',
-    'images/photo_5231325408857363737_y.jpg',
-    'images/photo_5231325408857363738_y.jpg',
-    'images/photo_5231325408857363739_y.jpg',
-    'images/photo_5231325408857363740_y.jpg',
-    'images/photo_5231325408857363741_y.jpg',
-    'images/photo_5231325408857363742_y.jpg',
-    'images/photo_5231325408857363743_y.jpg',
-    'images/photo_5231325408857363744_y.jpg',
-    'images/photo_5231325408857363745_y.jpg',
-    'images/photo_5231325408857363746_y.jpg',
-    'images/photo_5231325408857363747_y.jpg',
-    'images/photo_5231325408857363748_y.jpg',
-    'images/photo_5231325408857363750_y.jpg',
-    'images/photo_5231325408857363751_y.jpg',
-    'images/photo_5231325408857363752_y.jpg',
-    'images/photo_5231325408857363753_y.jpg',
-    'images/photo_5231325408857363754_y.jpg',
-    'images/photo_5231325408857363755_y.jpg',
-    'images/photo_5231325408857363756_y.jpg',
-    'images/photo_5231325408857363757_y.jpg',
-    'images/photo_5231325408857363758_y.jpg',
-    'images/photo_5231325408857363759_y.jpg',
-    'images/photo_5231325408857363759_y(1).jpg',
-    'images/photo_5231325408857363761_y.jpg',
-    'images/photo_5231325408857363762_y.jpg',
-    'images/photo_5231325408857363763_y.jpg',
-    'images/photo_5231325408857363764_y.jpg',
-    'images/photo_5231325408857363765_y.jpg',
-    'images/photo_5231325408857363766_y.jpg',
-    'images/photo_5231325408857363767_y.jpg',
-    'images/photo_5231325408857363769_y.jpg'
-];
+const imageByName = {
+    'sashimi 130g': 'sushi/sashimi.png',
+    'nigiri 2pcs': 'sushi/nigiri.png',
+    'gunkan 2pcs': 'sushi/gunkan.png',
+    'maki roll': 'sushi/maki-roll1.png',
+    'california': 'sushi/sushi-roll-california.png',
+    'philadelphia': 'sushi/sushi-roll-philadelphia.png',
+    'spicy tuna': 'sushi/sushi-roll-spicy-tuna.png',
+    'geisha': 'sushi/sushi-roll-geisha.png',
+    'cream roll': 'sushi/sushi-roll-cream-roll.png',
+    'shogun': 'sushi/sushi-roll-shogun.png',
+    'ninja': 'sushi/sushi-roll-ninja.png',
+    'canada': 'sushi/sushi-roll-canada.png',
+    'red dragon': 'sushi/sushi-roll-red-dragon.png',
+    'green dragon': 'sushi/sushi-roll-green-dragon.png',
+    'futomaki': 'sushi/sushi-roll-futomaki.png',
+    'black pearl': 'sushi/sushi-roll-black-pearl.png',
+    'alaska': 'sushi/sushi-roll-alaska.png',
+    'tataki tuna': 'sushi/sushi-roll-tataki-tuna.png',
+    'rainbow': 'sushi/sushi-roll-rainbow.png',
+    'vegan roll': 'sushi/sushi-roll-vegan.png',
+    'spicy salmon': 'sushi/sushi-roll-spicy-salmon.png',
+    'unagi roll': 'sushi/sushi-roll-unagi.png',
+    'tempura roll': 'sushi/sushi-roll-tempura.png',
+    'philadelphia with tuna': 'sushi/sushi-roll-philadelphia-tuna.png',
+    'philadelphia with shrimp': 'sushi/sushi-roll-philadelphia-shrimp.png',
+    'philadelphia with unagi': 'sushi/sushi-roll-philadelphia-unagi.png',
+    'tiger dragon': 'sushi/sushi-roll-tiger-dragon.png',
+    'chicken roll': 'sushi/sushi-roll-chicken.png',
+    'bonito roll': 'sushi/sushi-roll-bonito.png',
+    'fried salmon': 'sushi/sushi-roll-fried-salmon.png',
+    'sake hot': 'sushi/hot-roll.png',
+    'unagi hot': 'sushi/hot-roll.png',
+    'shrimp hot': 'sushi/hot-roll.png',
+    'maguro hot': 'sushi/hot-roll.png',
+    'vegan hot': 'sushi/hot-roll.png',
+    'baked roll': 'sushi/baked-roll.png',
+    'signature roll - truffle': 'sushi/signature-roll-truffle.png',
+    'signature roll - king crab': 'sushi/signature-roll-king-crab.png',
+    'set moriawase (900g)': 'sushi/set-moriawase.png',
+    'set #1 (830g)': 'sushi/set-1.png',
+    'set #2 (1470g)': 'sushi/set-2.png',
+    'set #3 (1250g)': 'sushi/set-3.png',
+    'set #4 (1300g)': 'sushi/set-4.png',
+    'set dragon (780g)': 'sushi/set-dragon.png',
+    'set philadelphia': 'sushi/set-philadelphia.png',
+    'set baked': 'sushi/set-baked.png',
+    'happy box': 'sushi/set-happy-box.png',
+    'set unagi': 'sushi/set-unagi.png',
+    'set for one': 'sushi/set-for-one.png',
+    'mix box': 'sushi/set-mix-box.png',
+    'signature box': 'sushi/set-signature-box.png',
+    'set salmon': 'sushi/set-salmon.png',
+    'set sakura': 'sushi/set-sakura.png',
+    'tartar - salmon': 'sushi/tartar-with-salmon.png',
+    'tartar - eel': 'sushi/tartar-with-eel.png',
+    'tartar - tuna': 'sushi/tartar-with-tuna.png',
+    'poke with chicken': 'sushi/salad-poke-chicken.png',
+    'poke with eel': 'sushi/salad-poke-eel.png',
+    'poke with salmon': 'sushi/salad-poke-salmon.png',
+    'salad chuka': 'sushi/salad-chuka.png',
+    'poke with shrimp': 'sushi/salad-poke-shrimp.png',
+    'poke with tuna': 'sushi/salad-poke-tuna.png',
+    'poke vegan': 'sushi/salad-poke-vegan.png',
+    'poke with hamachi': 'sushi/salad-poke-hamachi.png'
+};
 
 const categoryConfig = [
-    { key: 'Sashimi & Nigiri', tags: ['Sashimi 130g', 'Nigiri 2pcs', 'Gunkan 2pcs'] },
-    { key: 'Maki Roll', tags: ['Maki roll'] },
-    { key: 'Sushi Roll', tags: ['California', 'Philadelphia', 'Spicy Tuna', 'Geisha', 'Cream roll', 'Shogun', 'Ninja', 'Canada', 'Dragon', 'Futomaki', 'Black Pearl', 'Alaska', 'Tataki Tuna', 'Rainbow', 'Vegan Roll', 'Spicy Salmon', 'Unagi Roll', 'Tempura roll', 'Tiger Dragon', 'Chicken roll', 'Bonito roll', 'Fried Salmon'] },
-    { key: 'Hot Roll', tags: ['hot'] },
-    { key: 'Baked Roll', tags: ['Baked Roll'] },
-    { key: 'Signature Roll', tags: ['Signature roll'] },
-    { key: 'Set', tags: ['Set', 'Box'] },
-    { key: 'TarTar', tags: ['TarTar'] },
-    { key: 'Salads', tags: ['Poke', 'Salad Chuka'] }
+    { key: 'Sashimi & Nigiri', tags: ['Sashimi 130g', 'Nigiri 2pcs', 'Gunkan 2pcs'], defaultImage: 'sushi/sashimi.png' },
+    { key: 'Maki Roll', tags: ['Maki roll'], defaultImage: 'sushi/maki-roll2.png' },
+    { key: 'Sushi Roll', tags: ['California', 'Philadelphia', 'Spicy Tuna', 'Geisha', 'Cream roll', 'Shogun', 'Ninja', 'Canada', 'Dragon', 'Futomaki', 'Black Pearl', 'Alaska', 'Tataki Tuna', 'Rainbow', 'Vegan Roll', 'Spicy Salmon', 'Unagi Roll', 'Tempura roll', 'Tiger Dragon', 'Chicken roll', 'Bonito roll', 'Fried Salmon'], defaultImage: 'sushi/sushi-roll-california.png' },
+    { key: 'Hot Roll', tags: ['hot'], defaultImage: 'sushi/hot-roll.png' },
+    { key: 'Baked Roll', tags: ['Baked Roll'], defaultImage: 'sushi/baked-roll.png' },
+    { key: 'Signature Roll', tags: ['Signature roll'], defaultImage: 'sushi/signature-roll-truffle.png' },
+    { key: 'Set', tags: ['Set', 'Box'], defaultImage: 'sushi/set-moriawase.png' },
+    { key: 'TarTar', tags: ['TarTar'], defaultImage: 'sushi/tartar-with-salmon.png' },
+    { key: 'Salads', tags: ['Poke', 'Salad Chuka'], defaultImage: 'sushi/salad-poke-salmon.png' }
 ];
 
 // Initialize
@@ -687,7 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function normalizeName(name) {
-    return name.toLowerCase();
+    return name.toLowerCase().trim();
 }
 
 function categoryForItem(name) {
@@ -702,9 +725,14 @@ function categoryForItem(name) {
     return 'Chef Specials';
 }
 
-function pickImage(seed) {
-    const hash = Array.from(seed).reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    return menuImages[hash % menuImages.length];
+function defaultImageForCategory(categoryName) {
+    const category = categoryConfig.find(item => item.key === categoryName);
+    return category ? category.defaultImage : 'sushi/sashimi.png';
+}
+
+function resolveImage(name, categoryName) {
+    const normalized = normalizeName(name);
+    return imageByName[normalized] || defaultImageForCategory(categoryName);
 }
 
 function groupMenuItems(items) {
@@ -726,7 +754,7 @@ function groupMenuItems(items) {
                     type: 'group',
                     title: baseName,
                     description: item.description,
-                    image: pickImage(baseName),
+                    image: resolveImage(baseName, category),
                     variants: []
                 });
             }
@@ -742,7 +770,7 @@ function groupMenuItems(items) {
                 type: 'single',
                 item: {
                     ...item,
-                    image: pickImage(item.name)
+                    image: resolveImage(item.name, category)
                 }
             });
         }
